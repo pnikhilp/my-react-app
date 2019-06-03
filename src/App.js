@@ -1,16 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import Dashboard from './dashboard/Dashboard';
-import logo from './logo.svg';
+import NewLogin from './auth/NewLogin';
+import rootReducer from './reducers';
 import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-       <Dashboard />
-      </div>
+import PrivateRoute from './PrivateRoute';
+const store = createStore(rootReducer);
+const App = () => (
+  <Provider store={store}>
+     <Router>
+     <div>
+       <Route path='/login' component={NewLogin} />
+       <PrivateRoute path='/' exact component={Dashboard} />
+       {/* <PrivateRoute path='/home' exact component={Home} /> */}
+     </div>
+     </Router>
+  </Provider>   
     );
-  }
-}
 
 export default App;
