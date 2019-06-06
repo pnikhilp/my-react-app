@@ -1,5 +1,7 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, 
+  // Nav, NavDropdown, Form, FormControl, Button,
+ } from 'react-bootstrap';
 
 export default class NavbarHeader extends React.Component  {
   logout = () =>{
@@ -29,6 +31,7 @@ export default class NavbarHeader extends React.Component  {
       <Button variant="outline-success">Search</Button>
     </Form>
   </Navbar.Collapse> */}
+  <button onClick={this.logout}>logout</button>
 </Navbar>
     );
   }
