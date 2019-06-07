@@ -6,6 +6,7 @@ import {
   FETCH_STREAMS,
   DELETE_STREAM,
   EDIT_STREAM,
+  SHOW_LIST,
 } from './types';
 let nextTodoId = 0
 export const addTodo = text => ({
@@ -31,7 +32,6 @@ export const VisibilityFilters = {
 }
 
 export const createStreams = formValues => async (dispatch, getState) => {
-  console.log('GETSTATE*****', getState);
  const response = await streams.post('/streams', formValues);
  dispatch({type: CREATE_STREAM, payload: response.data})
  history.push('/')
@@ -56,4 +56,10 @@ export const editStream = (id, formValues) => async dispatch =>{
 export const deleteStream = id => async dispatch =>{
   await streams.delete(`/streams/${id}`)
   dispatch({ type: DELETE_STREAM, payload: id });
+}
+
+export const showConfirmation = () => async dispatch => {
+   const response = await streams.get('/streams');
+   dispatch({ type: SHOW_LIST, payload: response.data });
+   history.push('/')
 }

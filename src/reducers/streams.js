@@ -5,6 +5,7 @@ import {
     FETCH_STREAMS,
     DELETE_STREAM,
     EDIT_STREAM,
+    SHOW_LIST,
   } from '../actions/types';
 
 const INITIAL_STATE = {};
@@ -21,6 +22,8 @@ const streamReducer = (state = INITIAL_STATE, action) =>{
             return { ...state, [action.payload.id]: action.payload };
         case DELETE_STREAM:
             return _.omit(state, action.payload);
+        case SHOW_LIST:
+            return { ...action.payload }
         default:
             return state;
    }
