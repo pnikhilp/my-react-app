@@ -1,56 +1,53 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Button, Alert } from 'react-bootstrap'
-import { connect } from 'react-redux';
-import { createStreams } from '../actions'
-class StreamCreate extends React.Component{
+import { Button, Alert } from 'react-bootstrap';
 
-   renderError = ({error, touched}) =>{
+class StreamForm extends React.Component{
+  renderError = ({error, touched}) =>{
      if(error&&touched){
          return(<div>
-              <Alert variant="danger">
-    {error}
-  </Alert>
+              <Alert bsStyle="danger">
+                 {error}
+              </Alert>
          </div>)
      }
    }
-   renderInput = ({label, input, meta}) =>{
-       console.log('META-------', meta);
+
+  renderInput = ({label, input, meta}) =>{
      return(
          <div className='field'>
            <label>{label}</label>
            <input {...input} autoComplete='off'/>
-           
            {this.renderError(meta)}
          </div>
      )
    }
    
    onSubmit = (formValues) =>{
-       console.log('000000', formValues)
-       this.props.createStreams(formValues)
+       this.props.onSubmit(formValues)
    }
+
     render(){
     return(
         <div>
-        <form className='ui form' onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <form className='' onSubmit={this.props.handleSubmit(this.onSubmit)}>
             <Field
               name='title'
               component={this.renderInput}
-              label='Enter Title'
+              label='Title    '
             />
             <Field
               name='description'
               component={this.renderInput}
-              label='Enter Description'
+              label='Description'
             />
-             <Button variant="outline-primary" type='submit'>Submit</Button>
+             <Button bsStyle="primary" bsSize='small' type='submit' style={{ marginTop: 10, marginLeft: 100 }}>SUBMIT</Button>
         </form>
         </div>
     )}
 }
 
-const validate = (formValues) =>{
+const validate = (formValues) => {
     const errors = {};
     if(!formValues.title){
       errors.title='Enter title'
@@ -61,9 +58,7 @@ const validate = (formValues) =>{
     return errors;
 }
 
-const formWrapped = reduxForm({
+export default reduxForm({
     form: "streamCreate",
     validate: validate,
-})(StreamCreate);
-
-export default connect(null, { createStreams })(formWrapped);
+})(StreamForm);

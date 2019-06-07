@@ -25,16 +25,6 @@ export default class Dashboard extends Component{
                 <AddTodo />
                 <VisibleTodoList />
                 <Footer />
-            {/* <div className='col-md-8'>
-            <form onSubmit={this.addTodo}>
-            //   <label>ADD TODO</label>
-              <input placeholder="addTodo" onChange={this.handleChange} />
-              <Button bsSize='medium' bsStyle='primary' type='submit' >ADD TODO</Button>
-              </form>
-            </div>
-            <div className='col-md-4'>
-               col-md-4
-            </div> */}
             </div>
         )
     }

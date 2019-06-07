@@ -11,10 +11,10 @@ const INITIAL_STATE = {};
 
 const streamReducer = (state = INITIAL_STATE, action) =>{
    switch(action.type){
-        case CREATE_STREAM:
-           return {...state};
         case FETCH_STREAM:
             return { ...state, [action.payload.id]: action.payload };
+        case FETCH_STREAMS: 
+            return { ...action.payload };
         case CREATE_STREAM:
             return { ...state, [action.payload.id]: action.payload };
         case EDIT_STREAM:

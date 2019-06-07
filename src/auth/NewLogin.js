@@ -5,8 +5,9 @@ import {
   reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createStreams } from '../actions';
-import StreamCreate from '../components/StreamCreate';
+import StreamCreate from '../components/streams/StreamCreate';
 import "./NewLogin.css";
+// import StreamList from "../components/StreamList";
 class NewLogin extends Component {
   constructor(props) {
     super(props);
@@ -61,6 +62,7 @@ class NewLogin extends Component {
     return (
       <div className="Login">
       <StreamCreate />
+      {/* <StreamList /> */}
         {/* <form onSubmit={this.submitForm} className='ui form'>
           <FormGroup controlId="email" bsSize="large">
             <FormControl
